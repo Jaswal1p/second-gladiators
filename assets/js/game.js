@@ -2,25 +2,33 @@
 
 var playerName = window.prompt("what is your robot's name");
 
-// what is this?
+var playerHealth = 100;
 
-console.log(playerName);
+var playerAttack = 10;
 
-console.log("This logs creation of new medical software");
+// Log multiple values
 
-console.log(10 + 100);
+console.log(playerName, playerHealth, playerAttack);
 
-console.log("10" + "/" + "13" + "/" + "2002");
+var enemyName = "Pedro";
 
-console.log("Our robot's name is " + playerName);
+var enemyHealth = 50;
 
-// window.alert(playerName);
+var enemyAttack = 12;
+
+var fight = function() {
+    window.alert("WELCOME to Robot Gladiators!")
+};
+
+var endFight = function () {
+    window.alert("Fight has ended")
+};
 
 // creating a function named "fight"
 
-function fight() {
-    window.alert("The fight has begun");
+// function fight() {
+//     window.alert("The fight has begun");
 
-}
+// }
 
-//fight();
+fight();
