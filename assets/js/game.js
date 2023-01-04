@@ -6,6 +6,8 @@ var playerHealth = 100;
 
 var playerAttack = 10;
 
+var playerMoney = 10;
+
 // Log multiple values
 
 console.log(playerName, playerHealth, playerAttack);
@@ -60,7 +62,21 @@ var fight = function() {
     } else if (promptFight === "skip" || promptFight === "SKIP" || promptFight === "Skip") {
     
     window.alert(playerName + " has chosen to skip the fight!");
-    
+
+    var confirmSkip = window.confirm("Are you sure you want to skip this fight?")
+    console.log(confirmSkip);
+
+    if (confirmSkip) {
+
+       window.alert(playerName + " has decided to skip this fight. Goodbye!");
+
+       playerMoney = playerMoney - 2;   
+       console.log(playerMoney)
+       }
+        else {
+            fight();
+        }
+
     } else {
     window.alert("You need to choose a valid option!");
 
