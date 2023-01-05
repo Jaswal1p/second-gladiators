@@ -12,7 +12,15 @@ var playerMoney = 10;
 
 console.log(playerName, playerHealth, playerAttack);
 
-var enemyName = "Pedro";
+var enemyNames = ["Pedro", "Roberto", "Lara"];
+console.log(enemyNames);
+console.log(enemyNames.length);
+
+for(var i = 0; i < enemyNames.length; i++) {
+    console.log(enemyNames[i]);
+    console.log(i);
+    console.log(enemyNames[i] + " is st " + i + " index");
+}
 
 var enemyHealth = 50;
 
@@ -37,17 +45,17 @@ var fight = function() {
             // check enemy's health
 
             if (enemyHealth <=0) {
-                window.alert(enemyName + " has died!");
+                window.alert(enemyNames + " has died!");
             }
             else {
-                window.alert(enemyName + " still has " + enemyHealth + " health left.");
+                window.alert(enemyNames + " still has " + enemyHealth + " health left.");
             };
 
         // subtract value of 'enemyAttack' from 'playerHealth' & update new value of 'playerHealth'. 
         playerHealth = playerHealth - enemyAttack;
 
             // log a resulting message to the console
-            console.log(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining!");
+            console.log(enemyNames + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining!");
 
             // check player's health
 
@@ -80,20 +88,13 @@ var fight = function() {
     } else {
     window.alert("You need to choose a valid option!");
 
-    // var promptFight = window.prompt("Would you like to fight or skip this fight? Eneter 'FIGHT' or 'SKIP' to choose.");
+    
 }
 
 };
 
-// var endFight = function () {
-//     window.alert("Fight has ended")
-// };
 
-// creating a function named "fight"
 
-// function fight() {
-//     window.alert("The fight has begun");
 
-// }
 
-fight();
+// fight();
