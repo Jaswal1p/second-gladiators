@@ -13,20 +13,17 @@ var playerMoney = 10;
 console.log(playerName, playerHealth, playerAttack);
 
 var enemyNames = ["Pedro", "Roberto", "Lara"];
-console.log(enemyNames);
-console.log(enemyNames.length);
-
-for(var i = 0; i < enemyNames.length; i++) {
-    console.log(enemyNames[i]);
-    console.log(i);
-    console.log(enemyNames[i] + " is st " + i + " index");
-}
 
 var enemyHealth = 50;
 
 var enemyAttack = 12;
 
-var fight = function() {
+
+// for(var i = 0; i < enemyNames.length; i++) {
+//     fight(enemyNames[i]);
+// }
+
+var fight = function(enemyName) {
     // Alert players of game start
     window.alert("WELCOME to Robot Gladiators!");
 
@@ -45,17 +42,17 @@ var fight = function() {
             // check enemy's health
 
             if (enemyHealth <=0) {
-                window.alert(enemyNames + " has died!");
+                window.alert(enemyName + " has died!");
             }
             else {
-                window.alert(enemyNames + " still has " + enemyHealth + " health left.");
+                window.alert(enemyName + " still has " + enemyHealth + " health left.");
             };
 
         // subtract value of 'enemyAttack' from 'playerHealth' & update new value of 'playerHealth'. 
         playerHealth = playerHealth - enemyAttack;
 
             // log a resulting message to the console
-            console.log(enemyNames + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining!");
+            console.log(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining!");
 
             // check player's health
 
@@ -89,9 +86,13 @@ var fight = function() {
     window.alert("You need to choose a valid option!");
 
     
-}
+    }
 
 };
+
+for(var i = 0; i < enemyNames.length; i++) {
+    fight(enemyNames[i]);
+}
 
 
 
