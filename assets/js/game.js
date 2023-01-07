@@ -124,6 +124,18 @@ var startGame = function() {
             // pass the pickedEnemyName variable's value into the fight function, where it will assume the value of the enemyName parameter
             fight(pickedEnemyName);
 
+            // if player is still alive and we're not at the last enemy in the array
+            if (playerHealth > 0 && i < enemyNames.length -1) {
+                // ask if player wants to use the store before next round
+                var storeConfirm = window.confirm("The fight is over, would you like to visit the store before the next round?");
+
+                // if yes, take them to the store() function
+                if (storeConfirm) {
+                  shop(); 
+                }
+              
+            }
+
             
         }
         else 
@@ -164,6 +176,45 @@ var endGame = function() {
     
 }; // End of endGame function
 
+var shop = function() {
+    // ask player what they would like to do
+
+    var shopOptionPrompt = window.prompt(
+        "Would you like to REFILL your health, UPGRADE your attack, or Leave the store? Please eneter one: 'REFILL', 'UPGRADE' or 'LEAVE' to make a choice."
+    );
+
+    switch (shopOptionPrompt.toLowerCase()) {
+        case "refill":
+          window.alert("Refilling player's health by 20 for 7 dollers.");
+          
+          // increase health and decrease money
+          playerHealth = playerHealth + 20;
+          playerMoney = playerMoney - 7;
+          break;
+
+        case "upgrade":
+            window.alert("Upgrading player's attack by 6 for 7 dollers.");
+            
+          // increase health and decrease money
+          playerAttack = playerAttack + 6;
+          playerMoney = playerMoney - 7;
+          break;  
+
+        case "leave":
+            window.alert("You are leaving the shop without buying anything!");
+            
+          // do nothing so function will end
+          
+          break; 
+
+        default:
+            window.alert("Please enter a valid option") 
+            
+            shop();
+            break;
+    }
+    
+}; // End of shop function
 
 
 
