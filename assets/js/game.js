@@ -43,8 +43,9 @@ var fight = function(enemyName) {
              
                 window.alert(playerName + " has decided to skip this fight. Goodbye!");
 
-                playerMoney = playerMoney - 10;   
-                console.log(playerMoney)
+                playerMoney = Math.max(0, playerMoney - 10);
+                window.alert(playerName + " now has $" + playerMoney);
+                console.log(playerMoney);
 
                 break;
             }
@@ -53,7 +54,11 @@ var fight = function(enemyName) {
 
         
             // remove enemy's health by subtracting the amount of 'playerAttack' from 'enemyHealth' & update new value of 'enemyHealth'. 
-            enemyHealth = enemyHealth - playerAttack;
+
+            var damage = randomNumber(playerAttack -3, playerAttack)
+
+            enemyHealth = Math.max(0, enemyHealth - damage);
+            
 
                 // log a resulting message to the console
                 console.log(playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining.");
@@ -76,7 +81,11 @@ var fight = function(enemyName) {
                 };
 
             // subtract value of 'enemyAttack' from 'playerHealth' & update new value of 'playerHealth'. 
-            playerHealth = playerHealth - enemyAttack;
+            // generate random damage value based on player's attack power
+            var damage = randomNumber(enemyAttack - 3, enemyAttack);
+            
+
+            playerHealth = Math.max(0, playerHealth - damage);
 
                 // log a resulting message to the console
                 console.log(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining!");
@@ -98,6 +107,13 @@ var fight = function(enemyName) {
 
 }; // End of fight function
 
+var randomNumber = function(min, max) {
+    var value = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    return value;
+
+}; // End of random number function
+
 var startGame = function() {
     // reset player stats
 
@@ -116,7 +132,9 @@ var startGame = function() {
             var pickedEnemyName = enemyNames[i];
 
             // reset enemyHealth before starting new fight
-            enemyHealth = 50;
+            enemyHealth = randomNumber(40, 60);
+            console.log(enemyHealth);
+            window.alert(pickedEnemyName + " starts with health of " + enemyHealth);
 
             // use debugger to pause script from running and check what's going on at that moment in the code
             //debugger;
@@ -135,7 +153,6 @@ var startGame = function() {
                 }
               
             }
-
             
         }
         else 
@@ -147,8 +164,6 @@ var startGame = function() {
         
     };
 
-    // play again
-    //startGame();
 
     // after the loop ends, player is either out of health or enemies to fight, so run the endGame function
     endGame()
@@ -218,8 +233,20 @@ var shop = function() {
 
 
 
-// Start the game when the page loads
+// console.log(Math);
 
+//  console.log(Math.random());
+//  console.log(Math.random());
+//  console.log(Math.random());
+//  console.log(Math.random());
+
+// console.log(Math.max(1,10,100, 1000));
+// console.log(Math.min(-10,-1, 1, 10, 100, 1000));
+// console.log(Math.max(-100, -10, -1, 0));
+
+
+
+// Start the game when the page loads
 startGame();
 
 
