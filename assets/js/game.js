@@ -296,13 +296,16 @@ var endGame = function() {
 
 var shop = function() {
     // ask player what they would like to do
-
+    
     var shopOptionPrompt = window.prompt(
-        "Would you like to REFILL your health, UPGRADE your attack, or Leave the store? Please eneter one: 'REFILL', 'UPGRADE' or 'LEAVE' to make a choice."
+        "Would you like to REFILL your health, UPGRADE your attack, or Leave the store? Please enter 1 for 'REFILL', 2 for 'UPGRADE' or 3 to/for 'LEAVE' to make a choice."
     );
-
-    switch (shopOptionPrompt.toLowerCase()) {
-        case "refill":
+    shopOptionPrompt = parseInt(shopOptionPrompt);
+    //switch (shopOptionPrompt.toLowerCase()) 
+    switch (shopOptionPrompt)
+    {
+        //case "refill":
+        case 1:    
           window.alert("Refilling player's health by 20 for 7 dollers.");
           
           // increase health and decrease money
@@ -311,7 +314,8 @@ var shop = function() {
           playerInfo.refillHealth();
           break;
 
-        case "upgrade":
+        //case "upgrade":
+        case 2:
             window.alert("Upgrading player's attack by 6 for 7 dollers.");
             
           // increase attack and decrease money
@@ -320,7 +324,8 @@ var shop = function() {
           playerInfo.upgradeAttack();
           break;  
 
-        case "leave":
+        //case "leave":
+        case 3:
             window.alert("You are leaving the shop without buying anything!");
             
           // do nothing so function will end
