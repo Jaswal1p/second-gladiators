@@ -283,14 +283,37 @@ var startGame = function() {
 }; // End of startGame function
 
 var endGame = function() {
-    // if player is still alive, player wins!
-    if (playerInfo.health > 0) {
-        window.alert("Great Job, you've survived the game! You now have a score of " + playerInfo.money + ".")
-        console.log(playerInfo.money)
+
+    if (playerInfo.health <= 0) {
+        // window.alert("Great Job, you've survived the game! You now have a score of " + playerInfo.money + ".")
+        // console.log(playerInfo.money)
+        playerInfo.money = 0
+        window.alert("you've lost your robot in battle.")
+                
     }
     else {
-        window.alert("you've lost your robot in battle.")
+        window.alert("you still have health to play!")
     }
+    
+    window.alert("The game has now ended. Lets see how you did!");
+
+    // check local storage for high score, if it's not there, use 0
+    var highScore = localStorage.getItem("highscore");
+
+    if (highScore === null) {
+        highScore = 0;
+    }
+
+    // if player has more money than highscore, player has a new highscore!
+    if (playerInfo.money > highScore) {
+        localStorage.setItem("highscore", playerInfo.money);
+        localStorage.setItem("name", playerInfo.name);
+
+        alert(playerInfo.name + " now has the high score of " + playerInfo.money + "  !!yey!!");
+    } else {
+        alert(playerInfo.name + " did not beat the high score of " + highScore + ". May be next time!");
+    }
+
     // ask player if they would like to play again
     var playAgainConfirm = window.confirm("Would you like to play again?")
     
@@ -316,7 +339,7 @@ var shop = function() {
     {
         //case "refill":
         case 1:    
-          window.alert("Refilling player's health by 20 for 7 dollers.");
+          // window.alert("Refilling player's health by 20 for 7 dollers.");
           
           // increase health and decrease money
         //   playerInfo.health = playerInfo.health + 20;
@@ -326,7 +349,7 @@ var shop = function() {
 
         //case "upgrade":
         case 2:
-            window.alert("Upgrading player's attack by 6 for 7 dollers.");
+            // window.alert("Upgrading player's attack by 6 for 7 dollers.");
             
           // increase attack and decrease money
         //   playerInfo.attack = playerInfo.attack + 6;
