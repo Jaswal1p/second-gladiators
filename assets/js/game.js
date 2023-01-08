@@ -56,6 +56,7 @@ var fight = function(enemy) {
 
     if (Math.random() > 0.5) {
       isPlayerTurn = false;
+      console.log("enemy attacks")
       
     }
     
@@ -92,7 +93,9 @@ var fight = function(enemy) {
                     window.alert(enemy.name + " still has " + enemy.health + " health left.");
                 };
               
-        } else {
+        } else { 
+            
+            // (!isPlayerTurn)
             
             // Player gets attacked first!!!! Subtract value of 'enemy.attack' from 'playerInfo.health' & update new value of 'playerInfo.health'. 
             // generate random damage value based on player's attack power
@@ -121,6 +124,7 @@ var fight = function(enemy) {
         isPlayerTurn = !isPlayerTurn;   
                 
     } // End of while function within fight function.
+  
 
 }; // End of fight function
 
@@ -131,6 +135,9 @@ var startGame = function() {
     
     for(var i = 0; i < enemyInfo.length; i++) {
         
+        // cjeck player stats
+        console.log(playerInfo);
+            
         if (playerInfo.health > 0) {
             console.log(playerInfo.health);
             // let player know what round they are in, remember that arrayys start at 0 so it needs to have 1 added to it
@@ -142,8 +149,8 @@ var startGame = function() {
 
             // reset enemy.health before starting new fight
             pickedEnemyObj.health = randomNumber(40, 60);
-            
-            // pass the pickedenemy.name variable's value into the fight function, where it will assume the value of the enemy.name parameter
+
+             // pass the pickedenemy.name variable's value into the fight function, where it will assume the value of the enemy.name parameter
             fight(pickedEnemyObj);
 
             // if player is still alive and we're not at the last enemy in the array
