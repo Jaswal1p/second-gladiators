@@ -9,16 +9,25 @@ var fightOrSkip = function() {
     
     // ask player if they'd like to fight or skip using fight or skip function
 
-    var promptFight = window.prompt("Would you like to fight or skip this fight? Eneter 'FIGHT' or 'SKIP' to choose.");
+    var promptFight = window.prompt("Would you like to fight or skip this fight? Enter 'FIGHT' or 'SKIP' to choose.");
+    
     console.log(promptFight);
 
     // Enter the conditional recursive function call here!
     if (promptFight === "" || promptFight === null) {
-        window.alert("You need to provide a valid answer! Please try again.");
+        window.alert("You need to answer the prompt! Please try again.");
+        // window.alert("You need to provide a valid answer! Please try again.");
         
         return fightOrSkip();
     }
+    
+    else if (promptFight !== "FIGHT" && promptFight !== "SKIP") {
 
+        window.alert("You need to provide a valid answer! Please try again.");
+        return fightOrSkip();
+    
+    }
+    else
     // if player picks "skip" confirm and then stop the loop
     promptFight = promptFight.toLowerCase();
 
@@ -42,8 +51,9 @@ var fightOrSkip = function() {
             return true;
         }
         
-    } //"End of skip with in skipOrFight function"
-
+    } 
+     
+    
     return false;
 
 }; // End of flightOrSkip function.
